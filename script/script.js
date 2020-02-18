@@ -4,7 +4,7 @@ const startButtonElem = document.querySelector('.start-button'),
         formCalculateElem = document.querySelector('.form-calculate'),
         endButtonElem = document.querySelector('.end-button'),
         totalElem = document.querySelector('.total'),
-        fastRange = document.querySelector('.fast-range');
+        fastRangeElem = document.querySelector('.fast-range');
 
 function showElem(elem) {
         "use strict"; //зачем это нужно?
@@ -22,7 +22,7 @@ function handlerCallbackForm(event){//как event передается?
 
 
         if(target.classList.contains('want-faster')){
-               target.checked ? showElem(fastRange) : hideElem(fastRange); 
+               target.checked ? showElem(fastRangeElem) : hideElem(fastRangeElem); 
                //Expected an assignment or function call and instead saw an expression.
         }
 }
