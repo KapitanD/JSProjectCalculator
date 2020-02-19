@@ -41,12 +41,12 @@ function priceCalculation(elem) {
         let result = 0,
                 index = 0,
                 options = [];
-        
+
         if (elem.name === 'whichSite') {
                 for (const item of formCalculateElem.elements) {
                         if (item.type === 'checkbox') {
                                 item.checked = false;
-                                if(item.value === 'mobileTemplates'){
+                                if (item.value === 'mobileTemplates') {
                                         item.disabled = true;
                                 }
                         }
@@ -55,31 +55,31 @@ function priceCalculation(elem) {
         }
 
         for (const item of formCalculateElem.elements) {
-                if(item.name === 'whichSite' && item.checked){
+                if (item.name === 'whichSite' && item.checked) {
                         index = DATA.whichSite.indexOf(item.value);
-                }else if(item.classList.contains('calc-handler') && item.checked){
+                } else if (item.classList.contains('calc-handler') && item.checked) {
                         options.push(item.value);
                 }
         }
 
-        options.forEach(function(key){
-                if(typeof(DATA[key]) === 'number'){
-                        if(key === 'sendOrder'){
+        options.forEach(function (key) {
+                if (typeof (DATA[key]) === 'number') {
+                        if (key === 'sendOrder') {
                                 result += DATA[key];
-                        } else{
+                        } else {
                                 result += DATA.price[index] * DATA[key] / 100;
                         }
                 } else {
-                        if(key === 'desktopTemplates'){
+                        if (key === 'desktopTemplates') {
                                 result += DATA.price[index] * DATA[key][index] / 100;
-                        } else{
+                        } else {
                                 result += DATA[key][index];
                         }
                 }
         });
 
         result += DATA.price[index];
-        
+
         totalPriceSumElem.textContent = result;
 }
 
@@ -113,12 +113,12 @@ endButtonElem.addEventListener('click', function () {
 
 formCalculateElem.addEventListener('change', handlerCallbackForm);
 
-adaptElem.addEventListener('change', function(event){
+adaptElem.addEventListener('change', function (event) {
         const target = event.target;
         mobileTemplatesElem.checked = false;
-        if (target.checked){
-                mobileTemplatesElem.disabled = false;  
-        }else{
+        if (target.checked) {
+                mobileTemplatesElem.disabled = false;
+        } else {
                 mobileTemplatesElem.disabled = true;
         }
 });
